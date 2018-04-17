@@ -1,4 +1,4 @@
-require "DockingStation"
+require 'DockingStation'
 
 describe DockingStation do
 end

@@ -12,7 +12,7 @@ describe DockingStation do
 
   describe '#dock_bike' do
     it 'should refuse to dock if capacity is exceeded' do
-      subject.dock_bike(bike)
+      20.times { subject.dock_bike(bike) }
       expect{subject.dock_bike(bike)}.to raise_exception 'No Spaces'
     end
   end
@@ -20,11 +20,11 @@ describe DockingStation do
 
 
   it "should give us the bike instance" do
-    expect(subject.dock_bike(bike)).to be_instance_of(Bike)
+    expect(subject.dock_bike(bike)).to include(be_instance_of(Bike))
   end
   it "should have an attribute bike instance" do
     subject.dock_bike(bike)
-    expect(subject).to have_attributes(:bike => (be_instance_of(Bike)))
+    expect(subject).to respond_to :bikes_stored
   end
   it "should tell us if there is a docked bike" do
     expect(subject).to respond_to :bike_docked

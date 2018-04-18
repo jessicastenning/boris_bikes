@@ -7,7 +7,18 @@ describe DockingStation do
   it "should raise error message if no bikes" do
     expect { subject.release_bike if subject.bike.nil? }.to raise_error
   end
+
   it {is_expected.to respond_to(:dock_bike).with(1).arguments}
+
+  describe '#dock_bike' do
+    it 'should refuse to dock if capacity is exceeded' do
+      subject.dock_bike(bike)
+      expect{subject.dock_bike(bike)}.to raise_exception 'No Spaces'
+    end
+  end
+
+
+
   it "should give us the bike instance" do
     expect(subject.dock_bike(bike)).to be_instance_of(Bike)
   end

@@ -5,6 +5,7 @@ describe DockingStation do
   let(:bike) { Bike.new }
   it { is_expected.to respond_to :release_bike }
   it "should raise error message if no bikes" do
+    # TODO REFACTOR THIS AS THIS DOES NOT WORK PROPERLY NOW
     expect { subject.release_bike if subject.bike.nil? }.to raise_error
   end
 

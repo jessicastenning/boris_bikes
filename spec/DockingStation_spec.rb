@@ -17,8 +17,6 @@ describe DockingStation do
     end
   end
 
-
-
   it "should give us the bike instance" do
     expect(subject.dock_bike(bike)).to include(be_instance_of(Bike))
   end
